@@ -1,0 +1,13 @@
+{
+  "name": "irrigation-repair-clearing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.23.4"
+  },
+  "scripts": {
+    "origin": "node origin/origin.mjs",
+    "test": "node --test origin/source.test.mjs"
+  }
+}

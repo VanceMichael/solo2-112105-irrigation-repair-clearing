@@ -1,0 +1,25 @@
+{
+  "claims": [
+    {
+      "ref": "村请A",
+      "village": "蓝湾",
+      "invoice": "T77",
+      "line": 1,
+      "fen": 64000
+    },
+    {
+      "ref": "村请B",
+      "village": "橙湾",
+      "invoice": "T77",
+      "line": 1,
+      "fen": 64000
+    },
+    {
+      "ref": "村请C",
+      "village": "橙湾",
+      "invoice": "T78",
+      "line": 1,
+      "fen": 24000
+    }
+  ]
+}

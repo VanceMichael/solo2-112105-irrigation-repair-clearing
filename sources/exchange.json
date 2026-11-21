@@ -1,0 +1,506 @@
+{
+  "releases": [
+    {
+      "name": "首发",
+      "routes": {
+        "/management/packs": {
+          "packs": [
+            {
+              "issuer": "渠东站",
+              "id": "X7",
+              "device": "泵一",
+              "date": "2026-11-18",
+              "reach": "C91",
+              "shares": [
+                {
+                  "village": "蓝湾",
+                  "bp": 6000
+                },
+                {
+                  "village": "橙湾",
+                  "bp": 4000
+                }
+              ]
+            },
+            {
+              "issuer": "渠西站",
+              "id": "X7",
+              "device": "泵一",
+              "date": "2026-11-18",
+              "reach": "C92",
+              "shares": [
+                {
+                  "village": "橙湾",
+                  "bp": 10000
+                }
+              ]
+            }
+          ]
+        },
+        "/town/acceptance": {
+          "events": [
+            {
+              "id": "K1",
+              "pack": "渠东站/X7",
+              "invoice": "T77",
+              "accepted": [
+                {
+                  "line": 1,
+                  "fen": 64000
+                },
+                {
+                  "line": 2,
+                  "fen": 16000
+                }
+              ]
+            },
+            {
+              "id": "K2",
+              "pack": "渠西站/X7",
+              "invoice": "T78",
+              "accepted": [
+                {
+                  "line": 1,
+                  "fen": 24000
+                }
+              ]
+            }
+          ]
+        },
+        "/insurer/awards": {
+          "awards": [
+            {
+              "id": "Q1",
+              "reach": "C91",
+              "invoice": "T77",
+              "line": 1,
+              "coveredBeforeDeductibleFen": 25000,
+              "deductibleFen": 5000
+            }
+          ]
+        },
+        "/billing/register": {
+          "rows": [
+            {
+              "id": "T77",
+              "issuer": "维修站",
+              "loc": "/billing/T77",
+              "sha256": "16c88bcbda6b195980d9bf8277de0b3f97bfc1a2c2c19be3c20221a832071d99",
+              "kind": "invoice",
+              "lines": [
+                {
+                  "no": 1,
+                  "fen": 64000
+                },
+                {
+                  "no": 2,
+                  "fen": 16000
+                }
+              ]
+            },
+            {
+              "id": "T78",
+              "issuer": "维修站",
+              "loc": "/billing/T78",
+              "sha256": "c6782eab5c11619e58c6652b42bdb7515c575be052fe1326a08f784b1c44e592",
+              "kind": "invoice",
+              "lines": [
+                {
+                  "no": 1,
+                  "fen": 24000
+                }
+              ]
+            }
+          ],
+          "next": "b"
+        },
+        "/billing/register?cursor=b": {
+          "rows": [
+            {
+              "id": "E10",
+              "copyOf": "T77",
+              "issuer": "橙湾",
+              "loc": "/billing/T77",
+              "kind": "quote"
+            }
+          ],
+          "next": null
+        },
+        "/billing/T77": {
+          "mime": "text/plain; charset=utf-8",
+          "text": "发票 T77\n第 1 行 泵体应急修复 64000 分\n第 2 行 管路垫片 16000 分\n"
+        },
+        "/billing/T78": {
+          "mime": "text/plain; charset=utf-8",
+          "text": "发票 T78\n第 1 行 东渠电机修复 24000 分\n"
+        }
+      }
+    },
+    {
+      "name": "复核来件",
+      "routes": {
+        "/management/packs": {
+          "packs": [
+            {
+              "issuer": "渠东站",
+              "id": "X7",
+              "device": "泵一",
+              "date": "2026-11-18",
+              "reach": "C91",
+              "shares": [
+                {
+                  "village": "蓝湾",
+                  "bp": 6000
+                },
+                {
+                  "village": "橙湾",
+                  "bp": 4000
+                }
+              ]
+            },
+            {
+              "issuer": "渠西站",
+              "id": "X7",
+              "device": "泵一",
+              "date": "2026-11-18",
+              "reach": "C92",
+              "shares": [
+                {
+                  "village": "橙湾",
+                  "bp": 10000
+                }
+              ]
+            }
+          ],
+          "updates": [
+            {
+              "reach": "C91",
+              "fromDate": "2026-11-20",
+              "shares": [
+                {
+                  "village": "蓝湾",
+                  "bp": 2000
+                },
+                {
+                  "village": "橙湾",
+                  "bp": 8000
+                }
+              ]
+            }
+          ]
+        },
+        "/town/acceptance": {
+          "events": [
+            {
+              "id": "K1",
+              "pack": "渠东站/X7",
+              "invoice": "T77",
+              "accepted": [
+                {
+                  "line": 1,
+                  "fen": 64000
+                },
+                {
+                  "line": 2,
+                  "fen": 16000
+                }
+              ]
+            },
+            {
+              "id": "K2",
+              "pack": "渠西站/X7",
+              "invoice": "T78",
+              "accepted": [
+                {
+                  "line": 1,
+                  "fen": 24000
+                }
+              ]
+            }
+          ],
+          "withdrawn": [
+            {
+              "acceptance": "K1",
+              "line": 1,
+              "fen": 22000
+            }
+          ],
+          "replacement": [
+            {
+              "pack": "渠东站/X7",
+              "invoice": "T79",
+              "line": 1,
+              "includesInvoice": "T77",
+              "includesLine": 1,
+              "includesFen": 25000
+            }
+          ]
+        },
+        "/insurer/awards": {
+          "awards": [
+            {
+              "id": "Q2",
+              "replaces": "Q1",
+              "reach": "C91",
+              "invoice": "T77",
+              "line": 1,
+              "coveredBeforeDeductibleFen": 12000,
+              "deductibleFen": 5000
+            }
+          ]
+        },
+        "/billing/register": {
+          "rows": [
+            {
+              "id": "T77",
+              "issuer": "维修站",
+              "loc": "/billing/T77",
+              "sha256": "16c88bcbda6b195980d9bf8277de0b3f97bfc1a2c2c19be3c20221a832071d99",
+              "kind": "invoice",
+              "lines": [
+                {
+                  "no": 1,
+                  "fen": 64000
+                },
+                {
+                  "no": 2,
+                  "fen": 16000
+                }
+              ]
+            },
+            {
+              "id": "T78",
+              "issuer": "维修站",
+              "loc": "/billing/T78",
+              "sha256": "c6782eab5c11619e58c6652b42bdb7515c575be052fe1326a08f784b1c44e592",
+              "kind": "invoice",
+              "lines": [
+                {
+                  "no": 1,
+                  "fen": 24000
+                }
+              ]
+            }
+          ],
+          "next": "b"
+        },
+        "/billing/register?cursor=b": {
+          "rows": [
+            {
+              "id": "T79",
+              "issuer": "维修站",
+              "loc": "/billing/T79",
+              "sha256": "609ed2f1216e74c2fb950e0aad77f5e70fe004edda55fda80fb5de7573cda3a4",
+              "kind": "invoice",
+              "lines": [
+                {
+                  "no": 1,
+                  "fen": 90000
+                }
+              ]
+            }
+          ],
+          "next": null
+        },
+        "/billing/T77": {
+          "mime": "text/plain; charset=utf-8",
+          "text": "发票 T77\n第 1 行 泵体应急修复 64000 分\n第 2 行 管路垫片 16000 分\n"
+        },
+        "/billing/T78": {
+          "mime": "text/plain; charset=utf-8",
+          "text": "发票 T78\n第 1 行 东渠电机修复 24000 分\n"
+        },
+        "/billing/T79": {
+          "mime": "text/plain; charset=utf-8",
+          "text": "发票 T79\n第 1 行 泵体成套更换 90000 分\n"
+        }
+      }
+    },
+    {
+      "name": "票据作废",
+      "routes": {
+        "/management/packs": {
+          "packs": [
+            {
+              "issuer": "渠东站",
+              "id": "X7",
+              "device": "泵一",
+              "date": "2026-11-18",
+              "reach": "C91",
+              "shares": [
+                {
+                  "village": "蓝湾",
+                  "bp": 6000
+                },
+                {
+                  "village": "橙湾",
+                  "bp": 4000
+                }
+              ]
+            },
+            {
+              "issuer": "渠西站",
+              "id": "X7",
+              "device": "泵一",
+              "date": "2026-11-18",
+              "reach": "C92",
+              "shares": [
+                {
+                  "village": "橙湾",
+                  "bp": 10000
+                }
+              ]
+            }
+          ],
+          "updates": [
+            {
+              "reach": "C91",
+              "fromDate": "2026-11-20",
+              "shares": [
+                {
+                  "village": "蓝湾",
+                  "bp": 2000
+                },
+                {
+                  "village": "橙湾",
+                  "bp": 8000
+                }
+              ]
+            }
+          ]
+        },
+        "/town/acceptance": {
+          "events": [
+            {
+              "id": "K1",
+              "pack": "渠东站/X7",
+              "invoice": "T77",
+              "accepted": [
+                {
+                  "line": 1,
+                  "fen": 64000
+                },
+                {
+                  "line": 2,
+                  "fen": 16000
+                }
+              ]
+            },
+            {
+              "id": "K2",
+              "pack": "渠西站/X7",
+              "invoice": "T78",
+              "accepted": [
+                {
+                  "line": 1,
+                  "fen": 24000
+                }
+              ]
+            }
+          ],
+          "withdrawn": [
+            {
+              "acceptance": "K1",
+              "line": 1,
+              "fen": 22000
+            }
+          ],
+          "replacement": [
+            {
+              "pack": "渠东站/X7",
+              "invoice": "T79",
+              "line": 1,
+              "includesInvoice": "T77",
+              "includesLine": 1,
+              "includesFen": 25000
+            }
+          ]
+        },
+        "/insurer/awards": {
+          "awards": [
+            {
+              "id": "Q2",
+              "replaces": "Q1",
+              "reach": "C91",
+              "invoice": "T77",
+              "line": 1,
+              "coveredBeforeDeductibleFen": 12000,
+              "deductibleFen": 5000
+            }
+          ]
+        },
+        "/billing/register": {
+          "rows": [
+            {
+              "id": "T77",
+              "issuer": "维修站",
+              "loc": "/billing/T77",
+              "sha256": "16c88bcbda6b195980d9bf8277de0b3f97bfc1a2c2c19be3c20221a832071d99",
+              "kind": "invoice",
+              "lines": [
+                {
+                  "no": 1,
+                  "fen": 64000
+                },
+                {
+                  "no": 2,
+                  "fen": 16000
+                }
+              ]
+            },
+            {
+              "id": "T78",
+              "issuer": "维修站",
+              "loc": "/billing/T78",
+              "sha256": "c6782eab5c11619e58c6652b42bdb7515c575be052fe1326a08f784b1c44e592",
+              "kind": "invoice",
+              "lines": [
+                {
+                  "no": 1,
+                  "fen": 24000
+                }
+              ]
+            }
+          ],
+          "next": "b"
+        },
+        "/billing/register?cursor=b": {
+          "rows": [
+            {
+              "id": "T79",
+              "issuer": "维修站",
+              "loc": "/billing/T79",
+              "sha256": "609ed2f1216e74c2fb950e0aad77f5e70fe004edda55fda80fb5de7573cda3a4",
+              "kind": "invoice",
+              "lines": [
+                {
+                  "no": 1,
+                  "fen": 90000
+                }
+              ]
+            },
+            {
+              "id": "V09",
+              "issuer": "维修站",
+              "kind": "void",
+              "voids": "T77"
+            }
+          ],
+          "next": null
+        },
+        "/billing/T77": {
+          "mime": "text/plain; charset=utf-8",
+          "text": "发票 T77\n第 1 行 泵体应急修复 64000 分\n第 2 行 管路垫片 16000 分\n"
+        },
+        "/billing/T78": {
+          "mime": "text/plain; charset=utf-8",
+          "text": "发票 T78\n第 1 行 东渠电机修复 24000 分\n"
+        },
+        "/billing/T79": {
+          "mime": "text/plain; charset=utf-8",
+          "text": "发票 T79\n第 1 行 泵体成套更换 90000 分\n"
+        }
+      }
+    }
+  ]
+}
